@@ -4,38 +4,32 @@ import { neutrals, spacings } from '../theme';
 // TODO: This component needs some more styles
 export const StyledRanking = styled.ol`
   max-width: 613px;
-  border-radius: 4px; //
-  box-shadow: 0px 1px 8px #dae2e6; //
   margin: 0 auto;
   padding: 0;
   background-color: ${neutrals.lightest};
-  font: Lato; //
-  font-size: 13px; //
-  color: 2c2d30; //
+  border-radius: 4px; //
+  box-shadow: 0px 1px 8px #dae2e6; //
 
   > li {
     counter-increment: item;
     display: flex; //
-    align-item: center; //
+    align-items: center; //
     justify-content: center; //
     height: 84px; //
-    background-color: #F7F9FB; //
+    font-family: Lato; //
+    font-size: 13px; //
+    color: 2c2d30; //
+    font-weight: bold; //
 
-    :nth-child(odd) {
-      background-color: ${neutrals.lightest}; //
+    :nth-child(even) {
+      background-color: #F7F9FB; //
     }
 
     ::before {
       content: counter(item);
       margin-right: ${spacings.m}px;
-      margin-left: 40px; //
-      font-weight: semi-bold; //
-    }
-
-    // Pour mettre le nom en gras mais pour l'instant ça ne fonctionne pas
-    ::after {
-      content: userName(item); //
-      font-weight: bold; //
+      margin-left: ${spacings.s + spacings.l}px; //
+      font-weight: Semibold; //
     }
 
     :nth-child(1)::after,
@@ -43,33 +37,33 @@ export const StyledRanking = styled.ol`
     :nth-child(3)::after {
       font-size: 16px;
       margin-left: ${spacings.s}px;
+      margin-right: ${spacings.l}px; //
     }
 
     :nth-child(1)::after {
       content: '🥇';
-      margin-right: ${spacings.l}px; //
     }
 
     :nth-child(2)::after {
       content: '🥈';
-      margin-right: ${spacings.l}px; //
     }
 
     :nth-child(3)::after {
       content: '🥉';
-      margin-right: ${spacings.l}px; //
+    }
+
+    :nth-child(n+4) {
+      padding-right: ${spacings.l}px; //
     }
   }
 `;
 
 export const StyledPoints = styled.span`
   margin-left: auto;
-  margin-right: ${spacings.l}px; //
-  font-weight: bold;
 `;
 
 export const StyledImg = styled.div`
-  margin-left: ${spacings.m}px; //
+  margin-right: ${spacings.s + spacings.m}px; //
 `;
 
 export const StyledContainer = styled.div`
