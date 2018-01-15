@@ -12,6 +12,12 @@ import UserInfo from './components/UserInfo';
 class App extends Component {
   state = {
     profiles: [],
+    modalOpen: false, //
+    user: { //
+      picture: '', //
+      name: '', //
+      points: 0, //
+    },
   };
 
   componentWillMount() {
@@ -21,17 +27,26 @@ class App extends Component {
   }
 
   render() {
+    const { modalOpen, user } = this.state; //
     return (
       <div>
         <Ranking
           profiles={this.state.profiles}
-          onSelectProfile={() => {}}
+          onSelectProfile={
+            user => this.setState({ //
+              modalOpen: true, //
+              user, //
+            })
+           }
         />
-        <Modal show={false} onHide={() => {}}>
+        <Modal
+          show={modalOpen}
+          onHide={() => this.setState({ modalOpen: false })}
+        >
           <UserInfo
-            picture={null}
-            name=""
-            points={0}
+            picture={user.picture} //
+            name={user.name} //
+            points={user.points} //
           />
         </Modal>
       </div>

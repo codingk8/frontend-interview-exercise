@@ -29,7 +29,7 @@ export const StyledRanking = styled.ol`
       content: counter(item);
       margin-right: ${spacings.m}px;
       margin-left: ${spacings.s + spacings.l}px; //
-      font-weight: Semibold; //
+      font-weight: 600; //
     }
 
     :nth-child(1)::after,

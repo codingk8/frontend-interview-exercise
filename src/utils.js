@@ -4,21 +4,20 @@ export const getRankingTimeframeInterval = (timeframeSelector) => {
   if (timeframeSelector === 'week') {
     return {
       start: moment().startOf('isoWeek'),
-      stop: moment(),
+      stop: moment().endOf('isoWeek'),
     };
   } else if (timeframeSelector === 'month') {
     return {
       start: moment().startOf('month'),
       stop: moment(),
     };
-    // Ci-dessous le rajoute les éléments pour que le résultat du click sur "semaine précédente" s'affiche correctement
   } else if (timeframeSelector === 'last_week') {
     return {
-      start: moment().startOf('last_week'),
-      stop: moment(),
+      start: moment().subtract(1, 'weeks').startOf('isoWeek'),
+      stop: moment().subtract(1, 'weeks').endOf('isoWeek'),
     };
-  // return null;
   }
+  return null;
 };
 
 export const computeRanking = (profiles, timeframeSelector) => {
