@@ -4,7 +4,7 @@ export const getRankingTimeframeInterval = (timeframeSelector) => {
   if (timeframeSelector === 'week') {
     return {
       start: moment().startOf('isoWeek'),
-      stop: moment().endOf('isoWeek'),
+      stop: moment(),
     };
   } else if (timeframeSelector === 'month') {
     return {
@@ -31,7 +31,7 @@ export const computeRanking = (profiles, timeframeSelector) => {
       picture: profile.avatar,
       points: profile.received_rewards.reduce((total, reward) => {
         const creation = moment(reward.created_at);
-        if (creation.isBetween(start, stop, 'day', '[]')) { // last param for day inclusion
+        if (creation.isBetween(start, stop, 'day', [])) { // last param for day inclusion
           return total + reward.points;
         }
         return total;
