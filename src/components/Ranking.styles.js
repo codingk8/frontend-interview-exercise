@@ -7,13 +7,29 @@ export const StyledRanking = styled.ol`
   margin: 0 auto;
   padding: 0;
   background-color: ${neutrals.lightest};
+  border-radius: 4px; //
+  box-shadow: 0px 1px 8px #dae2e6; //
 
   > li {
     counter-increment: item;
+    display: flex; //
+    align-items: center; //
+    justify-content: center; //
+    height: 84px; //
+    font-family: Lato; //
+    font-size: 13px; //
+    color: 2c2d30; //
+    font-weight: bold; //
+
+    :nth-child(even) {
+      background-color: #F7F9FB; //
+    }
 
     ::before {
       content: counter(item);
       margin-right: ${spacings.m}px;
+      margin-left: ${spacings.s + spacings.l}px; //
+      font-weight: 600; //
     }
 
     :nth-child(1)::after,
@@ -21,6 +37,7 @@ export const StyledRanking = styled.ol`
     :nth-child(3)::after {
       font-size: 16px;
       margin-left: ${spacings.s}px;
+      margin-right: ${spacings.l}px; //
     }
 
     :nth-child(1)::after {
@@ -34,6 +51,10 @@ export const StyledRanking = styled.ol`
     :nth-child(3)::after {
       content: '🥉';
     }
+
+    :nth-child(n+4) {
+      padding-right: ${spacings.l}px; //
+    }
   }
 `;
 
@@ -42,9 +63,8 @@ export const StyledPoints = styled.span`
 `;
 
 export const StyledImg = styled.div`
-  margin-right: ${spacings.m}px;
+  margin-right: ${spacings.s + spacings.m}px; //
 `;
-
 
 export const StyledContainer = styled.div`
   margin: 0 auto;

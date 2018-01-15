@@ -4,12 +4,17 @@ export const getRankingTimeframeInterval = (timeframeSelector) => {
   if (timeframeSelector === 'week') {
     return {
       start: moment().startOf('isoWeek'),
-      stop: moment(),
+      stop: moment().endOf('isoWeek'),
     };
   } else if (timeframeSelector === 'month') {
     return {
       start: moment().startOf('month'),
       stop: moment(),
+    };
+  } else if (timeframeSelector === 'last_week') {
+    return {
+      start: moment().subtract(1, 'weeks').startOf('isoWeek'),
+      stop: moment().subtract(1, 'weeks').endOf('isoWeek'),
     };
   }
   return null;
